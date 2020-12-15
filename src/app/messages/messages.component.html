@@ -1,1 +1,14 @@
-<p>messages works!</p>
+<mat-list-item><h3>Mensajes:</h3></mat-list-item>
+<mat-divider></mat-divider>
+
+
+<button mat-stroked-button color="primary" (click)="clear()" id="button-clear">
+  <mat-icon aria-hidden="false" aria-label="Example home icon">clear_all</mat-icon> Borrar mensajes
+</button>
+<br />
+<br />
+<div *ngIf="messageService.messages.length">
+
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>

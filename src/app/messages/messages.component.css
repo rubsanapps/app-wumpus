@@ -1,0 +1,9 @@
+.sidebar {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 36px;
+}
+
+button {
+  margin-top: 25px;
+}

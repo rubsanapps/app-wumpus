@@ -17,18 +17,23 @@ export class CommandsComponent implements OnInit {
   }
 
   left() {
+    this.gameService.rotateLeft();
   }
 
   right() {
+    this.gameService.rotateRight();
   }
 
   move() {
+    this.gameService.movePlayer();
   }
 
   shoot() {
+    this.gameService.shootArrow();
   }
 
   exit() {
+
   }
 
 }

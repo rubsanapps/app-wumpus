@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
-
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,40 +10,43 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { BoardComponent } from './board/board.component';
 import { CellComponent } from './cell/cell.component';
+import { BoardComponent } from './board/board.component';
+import { GameService } from './game.service';
 import { CommandsComponent } from './commands/commands.component';
-import { GameComponent } from './game/game.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MenuComponent } from './menu/menu.component';
-import { ParametersComponent } from './parameters/parameters.component';
 import { StatusComponent } from './status/status.component';
+import { ParametersComponent } from './parameters/parameters.component';
+import { GameComponent } from './game/game.component';
+import { AppRoutingModule } from './app-routing.module';
 
-import { GameService } from './game.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CellComponent,
     BoardComponent,
-    CellComponent, 
     CommandsComponent,
-    GameComponent,
     MessagesComponent,
     MenuComponent,
+    StatusComponent,
     ParametersComponent,
-    StatusComponent, 
+    GameComponent
   ],
   imports: [
     AppRoutingModule,
-    BrowserAnimationsModule,
     BrowserModule,
-    MatBadgeModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatIconModule,
+    BrowserAnimationsModule,
     MatGridListModule,
-    MatTooltipModule
+    MatBadgeModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDividerModule,
+    MatDialogModule
+
+
   ],
   providers: [GameService],
   bootstrap: [AppComponent],
