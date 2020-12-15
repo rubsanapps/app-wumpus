@@ -1,0 +1,7 @@
+export const PERCEPTIONS = {
+  HEDOR: "HEDOR",
+  BRISA: "BRISA",
+  BRILLO: "BRILLO",
+  CHOQUE: "CHOQUE",
+  GRITO: "GRITO",
+}

@@ -1,0 +1,8 @@
+export const CELLS = {
+  EMPTY: "EMPTY",
+  REVEALED: "REVEALED",
+  WUMPUS: "WUMPUS",
+  GOLD: "GOLD",
+  WELL: "WELL",
+  PLAYER: "PLAYER0"  
+}

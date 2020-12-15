@@ -1,1 +1,39 @@
-<p>menu works!</p>
+<h1>Hunt the Whump</h1>
+<p><b>Objetivo:</b> Encontrar el lingote que se esconde en el tablero y salir vivo en el menor número de movimientos posible.</p>
+<p>
+  Usa los comandos para Avanzar, Girar, Lanzar una flecha o Salir.
+</p>
+<p>
+  Si encuentras en tu misma casilla al Wumpus o un pozo mueres.
+</p>
+<p>
+  Puedes ayudarte con percepciones al situarte en casillas adyacentes a:
+</p>
+
+<ul>
+  <li>Wumpus: percibes su hedor.</li>
+  <li>Pozo: percibes su brisa.</li>
+  <li>Oro: percibes su brillo.</li>
+  <li>Si matas al Wumpus: percibes su grito.</li>
+</ul>
+<div>
+  <label>
+    Celdas:
+    <input #cells type="number" />
+  </label>
+</div>
+<div>
+  <label>
+    Pozos:
+    <input #wells type="number" />
+  </label>
+</div>
+<div>
+  <label>
+    Flechas:
+    <input #arrows type="number" />
+  </label>
+</div>
+<button (click)="start(cells.value, wells.value, arrows.value);">
+  Nueva partida
+</button>
