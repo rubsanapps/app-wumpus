@@ -1,1 +1,9 @@
-<p>board works!</p>
+<p><b>Objetivo:</b> Encontrar el oro y salir vivo lo antes posible.</p>
+<div class="row" *ngFor="let row of board">
+  <div class="cell" *ngFor="let col of row">
+    <app-cell [type]="col"></app-cell>
+  </div>
+</div>
+
+
+

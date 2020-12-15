@@ -1,1 +1,5 @@
-<p>parameters works!</p>
+<mat-list-item>Parámetros:</mat-list-item>
+<mat-divider></mat-divider>
+<span matBadge="{{ this.getCells() }}x{{ this.getCells() }}" matBadgeOverlap="false">Tablero</span>
+<span matBadge="{{ this.getWells() }}" matBadgeOverlap="false">Pozos</span>
+<span matBadge="{{ this.getArrows() }}" matBadgeOverlap="false">Flechas</span>

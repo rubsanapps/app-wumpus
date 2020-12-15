@@ -1,0 +1,12 @@
+.row {
+  display: block;
+  height: 64px;
+}
+
+.cell {
+  display: inline-block;
+}
+
+span {
+  margin-left: 15px;
+}

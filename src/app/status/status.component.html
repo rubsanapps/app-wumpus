@@ -1,1 +1,5 @@
-<p>status works!</p>
+
+<mat-list-item>Estado:</mat-list-item>
+<mat-divider></mat-divider>
+<span matBadge="{{ this.getMoves() }}" matBadgeOverlap="false" matBadgeColor="accent">Movimientos</span>
+<span matBadge="{{ this.getArrowsLeft() }}" matBadgeOverlap="false" matBadgeColor="accent">Flechas disponibles</span>

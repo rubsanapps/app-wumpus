@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-commands',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameService: GameService,) {
+
+
+  }
 
   ngOnInit(): void {
+  }
+
+  left() {
+  }
+
+  right() {
+  }
+
+  move() {
+  }
+
+  shoot() {
+  }
+
+  exit() {
   }
 
 }

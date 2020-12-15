@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 42px;
+}
+
+.sidebar {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 36px;
+}

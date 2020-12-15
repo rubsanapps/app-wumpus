@@ -5,9 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class GameService {
 
+  private board: string[][] = [];
+
   cells = 5;
   wells = 3;
   arrows = 5;
+
+  moves = 0;
+  arrowsLeft = 5;
 
   constructor() { }
 
@@ -16,6 +21,10 @@ export class GameService {
     console.log("GameService: Init");
 
   };
+
+  renderBoard(): string[][] {
+    return this.board;
+  }
 
   setCells(cells: number): void {
     this.cells = cells;

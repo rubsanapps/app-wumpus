@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-parameters',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParametersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
   }
+  getCells(): number {
+    return this.gameService.cells;
+  }
 
+  getWells(): number {
+    return this.gameService.wells;
+  }
+
+  getArrows(): number {
+    return this.gameService.arrows;
+  }
 }
