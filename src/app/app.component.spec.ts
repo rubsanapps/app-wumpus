@@ -7,24 +7,30 @@ import { By } from '@angular/platform-browser';
 import { Observable, of as observableOf, throwError } from 'rxjs';
 
 import { Component } from '@angular/core';
+import { GameService } from './game.service';
 import { AppComponent } from './app.component';
+
+@Injectable()
+class MockGameService {
+  init = function () { };
+}
 
 @Directive({ selector: '[oneviewPermitted]' })
 class OneviewPermittedDirective {
   @Input() oneviewPermitted;
 }
 
-@Pipe({name: 'translate'})
+@Pipe({ name: 'translate' })
 class TranslatePipe implements PipeTransform {
   transform(value) { return value; }
 }
 
-@Pipe({name: 'phoneNumber'})
+@Pipe({ name: 'phoneNumber' })
 class PhoneNumberPipe implements PipeTransform {
   transform(value) { return value; }
 }
 
-@Pipe({name: 'safeHtml'})
+@Pipe({ name: 'safeHtml' })
 class SafeHtmlPipe implements PipeTransform {
   transform(value) { return value; }
 }
@@ -35,15 +41,15 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule ],
+      imports: [FormsModule, ReactiveFormsModule],
       declarations: [
         AppComponent,
         TranslatePipe, PhoneNumberPipe, SafeHtmlPipe,
         OneviewPermittedDirective
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [
-
+        { provide: GameService, useClass: MockGameService }
       ]
     }).overrideComponent(AppComponent, {
 
@@ -53,12 +59,25 @@ describe('AppComponent', () => {
   });
 
   afterEach(() => {
-    component.ngOnDestroy = function() {};
+    component.ngOnDestroy = function () { };
     fixture.destroy();
   });
 
   it('should run #constructor()', async () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should run #start()', async () => {
+    component.gameService = component.gameService || {};
+    component.gameService.init = jest.fn();
+    component.start();
+    // expect(component.gameService.init).toHaveBeenCalled();
+  });
+
+  it('should run #menu()', async () => {
+
+    component.menu();
+
   });
 
 });
