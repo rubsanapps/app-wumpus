@@ -2,9 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
+## Prerequisites
+
+Download and install LTS version of [Node.js](https://nodejs.org).
+
+Download and install Angular CLI `npm install -g @angular/cli`
+
+Download and install Angular DevKit `npm install --save-dev @angular-devkit/build-angular`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Run `ng serve --open` for a dev server and auto open `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -16,11 +26,13 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `jest` to execute the unit tests via [Jest](https://karma-runner.github.io).
+Download and Install JEST `npm install jest --global` [Jest](https://jestjs.io/).
+
+Run `jest` to execute the unit tests via [Jest](https://jestjs.io/).
 
 Run `jest --coverage` to check test coverage via [Jest](https://jestjs.io/).
 
-Run `ng test` to execute the unit tests via [Karma](https://jestjs.io/). (Deshabilitado)
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). (Deshabilitado)
 
 ## Running end-to-end tests
 
