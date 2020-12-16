@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -41,6 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatGridListModule,
     MatBadgeModule,
     MatIconModule,
+    MatInputModule,
     MatButtonModule,
     MatTooltipModule,
     MatDividerModule,

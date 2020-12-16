@@ -1,43 +1,51 @@
-<h1>Hunt the Wumpus</h1>
-<p><b>Objetivo:</b> Encontrar el lingote que se esconde en el tablero y salir vivo en el menor número de movimientos posible.</p>
-<p>
-  Usa los comandos para Avanzar, Girar, Lanzar una flecha o Salir.
-</p>
-<p>
-  Si encuentras en tu misma casilla al Wumpus o un pozo mueres.
-</p>
-<p>
-  Puedes ayudarte con percepciones al situarte en casillas adyacentes a:
-</p>
+<div class="content" role="main">
 
-<ul>
-  <li>Wumpus: percibes su hedor.</li>
-  <li>Pozo: percibes su brisa.</li>
-  <li>Oro: percibes su brillo.</li>
-  <li>Muro: percibes el choque.</li>
-  <li>Si matas al Wumpus: percibes su grito.</li>
-</ul>
+  <h1>Hunt the Wumpus</h1>
+  <p><b>Objetivo:</b> Encontrar el lingote que se esconde en el tablero y salir vivo en el menor número de movimientos posible.</p>
+  <p>
+    Usa los comandos para Avanzar, Girar, Lanzar una flecha o Salir.
+  </p>
+  <p>
+    Si encuentras en tu misma casilla al Wumpus o un pozo mueres.
+  </p>
+  <p>
+    Puedes ayudarte con percepciones al situarte en casillas adyacentes a:
+  </p>
 
-<h3>Configuración:</h3>
+  <ul>
+    <li>Wumpus: percibes su hedor.</li>
+    <li>Pozo: percibes su brisa.</li>
+    <li>Oro: percibes su brillo.</li>
+    <li>Muro: percibes el choque.</li>
+    <li>Si matas al Wumpus: percibes su grito.</li>
+  </ul>
 
-<div>
-  <label>
-    Celdas:
-    <input #cells id="cells" type="number" />
-  </label>
+  <h3>Configuración:</h3>
+
+  <div class="configuracion">
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Celdas:</mat-label>
+        <input #cells id="cells" type="number" matInput maxlength="256" placeholder="Celdas del tablero: 5" value="5">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Pozos:</mat-label>
+        <input #wells id="wells" type="number" matInput maxlength="256" placeholder="Número de pozos: 3" value="3">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Flechas:</mat-label>
+        <input #arrows id="arrows" type="number" matInput maxlength="256" placeholder="Número de flechas: 5" value="5">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button id="button-start" mat-stroked-button color="primary" (click)="start(cells.value, wells.value, arrows.value);" matTooltip="Nueva partida" matTooltipPosition="below">
+    Nueva partida
+  </button>
+
+
 </div>
-<div>
-  <label>
-    Pozos:
-    <input #wells id="wells" type="number" />
-  </label>
-</div>
-<div>
-  <label>
-    Flechas:
-    <input #arrows id="arrows" type="number" />
-  </label>
-</div>
-<button id="button-start" (click)="start(cells.value, wells.value, arrows.value);">
-  Nueva partida
-</button>

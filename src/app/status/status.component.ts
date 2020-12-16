@@ -13,6 +13,8 @@ export class StatusComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.getMoves();
+    this.getArrowsLeft();
   }
 
   getMoves(): number {
@@ -22,7 +24,6 @@ export class StatusComponent implements OnInit {
   getArrowsLeft(): number {
     return this.gameService.arrowsLeft;
   }
-
 
 }
 

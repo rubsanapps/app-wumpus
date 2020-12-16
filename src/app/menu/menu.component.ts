@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GameService } from '../game.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   wells = 3;
   arrows = 5;
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, private router: Router) {
+  constructor(private gameService: GameService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,7 +25,6 @@ export class MenuComponent implements OnInit {
     this.gameService.setWells(wells);
     this.gameService.setArrows(arrows);
     this.router.navigate(['/game']);
-
 
   }
 

@@ -3,3 +3,7 @@ button {
   vertical-align: top;
   margin-left: 20px;
 }
+
+.mat-divider {
+  width: 33%;
+}

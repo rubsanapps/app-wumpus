@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cell',
@@ -7,5 +7,4 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CellComponent {
   @Input() type: string;
-  @Input() perceptions: string[];
 }

@@ -8,9 +8,7 @@ import { GameService } from '../game.service';
 })
 export class CommandsComponent implements OnInit {
 
-  constructor(private gameService: GameService,) {
-
-
+  constructor(private gameService: GameService) {
   }
 
   ngOnInit(): void {
@@ -30,10 +28,6 @@ export class CommandsComponent implements OnInit {
 
   shoot() {
     this.gameService.shootArrow();
-  }
-
-  exit() {
-
   }
 
 }

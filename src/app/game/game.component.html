@@ -1,12 +1,24 @@
-<mat-grid-list cols="4" rowHeight="150px">
-  <mat-grid-tile colspan="3"><app-parameters></app-parameters></mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="3"><app-messages></app-messages></mat-grid-tile>
-  <mat-grid-tile colspan="3"><app-status></app-status></mat-grid-tile>
-  <mat-grid-tile colspan="3"><app-commands></app-commands></mat-grid-tile>
-</mat-grid-list>
+<h1>Hunt the Wumpus</h1>
 
-<app-board></app-board>
+<div class="content">
 
+  <div class="content-left">
+    <app-parameters></app-parameters>
+    <app-status></app-status>
+    <app-commands></app-commands>
+    <app-board></app-board>
+    <b> - SALIDA - </b>
+  </div>
 
+  <div class="content-right">
+    <button id="button-exit" mat-stroked-button color="primary" (click)="menu()"
+            matTooltip="Salir"
+            matTooltipPosition="below">
+      Volver al menú
+    </button>
+   <app-messages></app-messages>
+  </div>
+
+</div>
 
 

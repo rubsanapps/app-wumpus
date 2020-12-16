@@ -4,6 +4,7 @@ span {
   margin-left: 40px;
 }
 
-mat-divider {
+.mat-divider {
   padding-bottom: 32px;
+  width: 33%;
 }

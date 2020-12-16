@@ -11,6 +11,10 @@ export class ParametersComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+
+    this.getCells();
+    this.getWells();
+    this.getArrows();
   }
   getCells(): number {
     return this.gameService.cells;

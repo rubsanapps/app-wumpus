@@ -1,5 +1,7 @@
-<mat-list-item>Parámetros:</mat-list-item>
-<mat-divider></mat-divider>
-<span matBadge="{{ this.getCells() }}x{{ this.getCells() }}" matBadgeOverlap="false">Tablero</span>
-<span matBadge="{{ this.getWells() }}" matBadgeOverlap="false">Pozos</span>
-<span matBadge="{{ this.getArrows() }}" matBadgeOverlap="false">Flechas</span>
+<section id="parametros">
+  <mat-list-item><h3>Parámetros:</h3></mat-list-item>
+  <mat-divider></mat-divider>
+  <span matBadge="{{ this.getCells() }}x{{ this.getCells() }}" matBadgeOverlap="false" id="cells">Tablero</span>
+  <span matBadge="{{ this.getWells() }}" matBadgeOverlap="false" id="wells">Pozos</span>
+  <span matBadge="{{ this.getArrows() }}" matBadgeOverlap="false" id="arrows">Flechas</span>
+</section>

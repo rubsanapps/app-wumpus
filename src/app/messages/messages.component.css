@@ -7,3 +7,8 @@
 button {
   margin-top: 25px;
 }
+
+.mat-divider {
+  width: 33%;
+  float: left;
+}

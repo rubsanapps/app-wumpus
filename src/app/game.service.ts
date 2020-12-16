@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Coord } from './coord';
 import { CELLS } from './cells';
@@ -21,11 +21,11 @@ export class GameService {
   private playerRotation = 0;
 
   cells = 5;
-  wells = 5;
-  arrows = 10;
+  wells = 3;
+  arrows = 5;
 
   moves = 0;
-  arrowsLeft = 10;
+  arrowsLeft = 5;
 
   isOver = false;
   isWin = false;
@@ -42,7 +42,12 @@ export class GameService {
 
   init(): void {
 
-    console.log("GameService: Init");
+    this.isOver = false;
+    this.isWin = false;
+    this.isDead = false;
+    this.goldTaken = false;
+    this.moves = 0;
+    this.arrowsLeft = this.arrows;
 
     this.messageService.clear();
     this.log("¡ Nueva partida !");
@@ -93,7 +98,9 @@ export class GameService {
   initPlayer(): void {
     this.board[this.cells - 1][0] = CELLS.PLAYER;
     this.playerPosX = this.cells - 1;
+    this.playerPosY = 0;
     this.arrowsLeft = this.arrows;
+    this.playerRotation = 0;
   }
 
   initGold(coord: Coord): void {
@@ -135,16 +142,16 @@ export class GameService {
   }
 
   movePlayer() {
-    this.moves++;
-    switch (this.playerRotation) {
-      case 0: this.step(this.playerPosX - 1, this.playerPosY); break;
-      case 90: this.step(this.playerPosX, this.playerPosY + 1); break;
-      case 180: this.step(this.playerPosX + 1, this.playerPosY); break;
-      case 270: this.step(this.playerPosX, this.playerPosY - 1); break;
+    if (!this.isOver) {
+      this.moves++;
+      switch (this.playerRotation) {
+        case 0: this.step(this.playerPosX - 1, this.playerPosY); break;
+        case 90: this.step(this.playerPosX, this.playerPosY + 1); break;
+        case 180: this.step(this.playerPosX + 1, this.playerPosY); break;
+        case 270: this.step(this.playerPosX, this.playerPosY - 1); break;
+      }
+      this.updatePerceptions(this.playerPosX, this.playerPosY);
     }
-    this.updatePerceptions(this.playerPosX, this.playerPosY);
-
-
   }
 
   step(x, y) {
@@ -173,50 +180,52 @@ export class GameService {
   }
 
   rotateLeft(): void {
-    if (this.playerRotation != 0) {
-      this.playerRotation -= 90;
-    } else {
-      this.playerRotation = 270;
+    if (!this.isOver) {
+      if (this.playerRotation != 0) {
+        this.playerRotation -= 90;
+      } else {
+        this.playerRotation = 270;
+      }
+      this.updateRotation();
     }
-    this.updateRotation();
-    // this.boardChanged.next(this.renderBoard());
   }
 
   rotateRight(): void {
-    if (this.playerRotation != 270) {
-      this.playerRotation += 90;
-    } else {
-      this.playerRotation = 0;
+    if (!this.isOver) {
+      if (this.playerRotation != 270) {
+        this.playerRotation += 90;
+      } else {
+        this.playerRotation = 0;
+      }
+      this.updateRotation();
     }
-    this.updateRotation();
-    // this.boardChanged.next(this.renderBoard());
   }
 
   shootArrow() {
-    if (this.arrowsLeft > 0) {
-      this.arrowsLeft -= 1;
-      switch (this.playerRotation) {
-        case 0: if (this.playerPosX > this.wumpusPosX && this.playerPosY == this.wumpusPosY) { this.isDead = true }; break;
-        case 90: if (this.playerPosX && this.wumpusPosX && this.playerPosY < this.wumpusPosY) { this.isDead = true }; break;
-        case 180: if (this.playerPosX < this.wumpusPosX && this.playerPosY == this.wumpusPosY) { this.isDead = true }; break;
-        case 270: if (this.playerPosX && this.wumpusPosX && this.playerPosY > this.wumpusPosY) { this.isDead = true }; break;
-      }
-      if (this.isDead) {
-        this.log("¡ Has eliminado al wumpus y escuchas su GRITO !");
-        this.board[this.wumpusPosX][this.wumpusPosY] = "EMPTY";
-        this.wumpusPosX = -1;
-        this.wumpusPosX = -1;
+    if (!this.isOver) {
+      if (this.arrowsLeft > 0) {
+        this.arrowsLeft -= 1;
+        switch (this.playerRotation) {
+          case 0: if (this.playerPosX > this.wumpusPosX && this.playerPosY == this.wumpusPosY) { this.isDead = true }; break;
+          case 90: if (this.playerPosX && this.wumpusPosX && this.playerPosY < this.wumpusPosY) { this.isDead = true }; break;
+          case 180: if (this.playerPosX < this.wumpusPosX && this.playerPosY == this.wumpusPosY) { this.isDead = true }; break;
+          case 270: if (this.playerPosX && this.wumpusPosX && this.playerPosY > this.wumpusPosY) { this.isDead = true }; break;
+        }
+        if (this.isDead) {
+          this.log("¡ Has eliminado al wumpus y escuchas su GRITO !");
+          this.board[this.wumpusPosX][this.wumpusPosY] = "EMPTY";
+          this.wumpusPosX = -1;
+          this.wumpusPosX = -1;
+        } else {
+          this.log("¡ Has disparado una flecha y has fallado !");
+        }
       } else {
-        this.log("¡ Has disparado una flecha y has fallado !");
+        this.log("¡ Te has quedado sin flechas !");
       }
-    } else {
-      this.log("¡ Te has quedado sin flechas !");
     }
-
   }
 
   renderBoard(): string[][] {
-    //this.updateRotation();
     return this.board;
   }
 
@@ -226,17 +235,16 @@ export class GameService {
   }
 
   checkPerception(cell: string) {
-    console.log("CHECK: " + cell);
-
-    switch (cell) {
-      case "WUMPUS": this.log("Percibes el HEDOR del Wumpus."); break;
-      case "GOLD": this.log("Percibes el BRILLO del Oro."); break;
-      case "WELL": this.log("Percibes la BRISA del Pozo."); break;
+    if (!this.isOver) {
+      switch (cell) {
+        case "WUMPUS": this.log("Percibes el HEDOR del Wumpus."); break;
+        case "GOLD": this.log("Percibes el BRILLO del Oro."); break;
+        case "WELL": this.log("Percibes la BRISA del Pozo."); break;
+      }
     }
-
   }
+
   updatePerceptions(x, y) {
-    console.log("X: " + x + ", Y: " + y);
     if (x - 1 >= 0)
       this.checkPerception(this.board[x - 1][y]);
     if (y - 1 >= 0)
@@ -249,10 +257,12 @@ export class GameService {
 
   gameOver() {
     this.log("¡ GAME OVER !");
+    this.isOver = true;
   }
 
   won() {
     this.log("¡ Has ganado en " + this.moves + " movimientos !");
+    this.isOver = true;
   }
 
   private log(message: string) {
